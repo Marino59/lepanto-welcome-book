@@ -33,6 +33,14 @@ interface Emergency {
   icon?: string;
 }
 
+interface Sightseeing {
+  _id: string;
+  name?: string;
+  address?: string;
+  description?: string;
+  icon?: string;
+}
+
 export const revalidate = 10; // Revalidate cache every 10 seconds
 
 export default async function Home() {
@@ -41,12 +49,14 @@ export default async function Home() {
   const restaurantsUrl = await queries.getRestaurants();
   const facilitiesUrl = await queries.getFacilities();
   const emergenciesUrl = await queries.getEmergencies();
+  const sightseeingUrl = await queries.getSightseeing();
 
   // Await and cast types
   const houseInfo = houseInfoUrl as HouseInfo || null;
   const restaurants = (restaurantsUrl || []) as Restaurant[];
   const facilities = (facilitiesUrl || []) as Facility[];
   const emergencies = (emergenciesUrl || []) as Emergency[];
+  const sightseeing = (sightseeingUrl || []) as Sightseeing[];
 
   // Fallback Data if Sanity is empty
   const defaultHouseInfo = {
@@ -73,7 +83,13 @@ export default async function Home() {
     { _id: '1', name: "Emergenza Generale", number: "112", icon: "phone" },
     { _id: '2', name: "Ambulanza", number: "118", icon: "truck-medical" },
     { _id: '3', name: "Guardia Medica Lido", number: "041 2385668", icon: "house-medical" },
-    { _id: '4', name: "Ospedale Al Mare (Lido)", number: "041 5295234", icon: "hospital" },
+    { _id: '4', name: "Ospedale Al Mare (Lido)", number: "041 5295234", icon: "hospital" }
+  ];
+
+  const defaultSightseeing = [
+    { _id: '1', name: "Antico Cimitero Ebraico", address: "Riviera San Nicolò", description: "Uno dei cimiteri ebraici più antichi e suggestivi d'Europa, fondato nel 1386. Un luogo di pace e memoria storica immerso nel verde.", icon: "monument" },
+    { _id: '2', name: "Aeroporto Nicelli", address: "Via Morandi, 9", description: "L'aeroporto storico del Lido, capolavoro dell'architettura razionalista degli anni '30. È considerato uno dei dieci aeroporti più belli al mondo.", icon: "plane" },
+    { _id: '3', name: "Chiesa di San Nicolò", address: "Riviera San Nicolò", description: "La chiesa dove si conservano parte delle reliquie di San Nicola. Fondata nel 1044, è storicamente legata alla cerimonia dello Sposalizio del Mare.", icon: "church" }
   ];
 
   // Merge
@@ -81,6 +97,7 @@ export default async function Home() {
   const finalRestaurants = restaurants.length > 0 ? restaurants : defaultRestaurants;
   const finalFacilities = facilities.length > 0 ? facilities : defaultFacilities;
   const finalEmergencies = emergencies.length > 0 ? emergencies : defaultEmergencies;
+  const finalSightseeing = sightseeing.length > 0 ? sightseeing : defaultSightseeing;
 
   return (
     <div className="w-full max-w-md bg-white min-h-screen relative shadow-2xl sm:min-h-[850px] sm:my-8 sm:rounded-3xl border border-gray-100 pb-10">
@@ -114,6 +131,12 @@ export default async function Home() {
                         <i className="fa-solid fa-utensils text-xs"></i>
                     </div>
                     <span className="text-[10px] font-bold text-gray-500 uppercase tracking-tighter">Cibo</span>
+                </a>
+                <a href="#vedere" className="flex flex-col items-center p-2 min-w-[60px]">
+                    <div className="w-8 h-8 rounded-full bg-brand-50 text-brand-500 flex items-center justify-center mb-1">
+                        <i className="fa-solid fa-camera text-xs"></i>
+                    </div>
+                    <span className="text-[10px] font-bold text-gray-500 uppercase tracking-tighter">Vedere</span>
                 </a>
                 <a href="#negozi" className="flex flex-col items-center p-2 min-w-[60px]">
                     <div className="w-8 h-8 rounded-full bg-brand-50 text-brand-500 flex items-center justify-center mb-1">
@@ -154,6 +177,23 @@ export default async function Home() {
                         <h3 className="font-bold text-gray-900">{restaurant.name}</h3>
                         <p className="text-xs text-brand-800 font-medium mb-1"><i className="fa-solid fa-map-pin mr-1"></i>{restaurant.address}</p>
                         <p className="text-sm text-gray-600">{restaurant.description}</p>
+                    </div>
+                </div>
+                ))}
+            </div>
+
+            {/* Sightseeing Section */}
+            <h2 id="vedere" className="font-serif text-xl font-bold text-gray-800 mb-4 px-1 mt-8 scroll-mt-24">Luoghi da Vedere</h2>
+            <div className="space-y-4 mb-8">
+                {finalSightseeing.map((site) => (
+                <div key={site._id} className="flex bg-white content-card rounded-2xl p-4 border border-gray-100">
+                    <div className="w-10 h-10 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center mr-4 shrink-0">
+                        <i className={`fa-solid fa-${site.icon || 'landmark'}`}></i>
+                    </div>
+                    <div>
+                        <h3 className="font-bold text-gray-900">{site.name}</h3>
+                        <p className="text-xs text-teal-800 font-medium mb-1"><i className="fa-solid fa-location-dot mr-1"></i>{site.address}</p>
+                        <p className="text-sm text-gray-600 leading-relaxed">{site.description}</p>
                     </div>
                 </div>
                 ))}
