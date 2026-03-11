@@ -27,18 +27,18 @@ interface Facility {
   icon?: string;
 }
 
+interface Sightseeing {
+  name: string;
+  description: string;
+  address: string;
+  icon: string;
+  mainImage?: string;
+}
+
 interface Emergency {
   _id: string;
   name?: string;
   number?: string;
-  icon?: string;
-}
-
-interface Sightseeing {
-  _id: string;
-  name?: string;
-  address?: string;
-  description?: string;
   icon?: string;
 }
 
@@ -87,11 +87,10 @@ export default async function Home() {
     { _id: '3', name: "Guardia Medica Lido", number: "041 2385668", icon: "house-medical" },
     { _id: '4', name: "Ospedale Al Mare (Lido)", number: "041 5295234", icon: "hospital" }
   ];
-
   const defaultSightseeing = [
-    { _id: '1', name: "Antico Cimitero Ebraico", address: "Riviera San Nicolò", description: "Uno dei cimiteri ebraici più antichi e suggestivi d'Europa, fondato nel 1386. Un luogo di pace e memoria storica immerso nel verde.", icon: "monument" },
-    { _id: '2', name: "Aeroporto Nicelli", address: "Via Morandi, 9", description: "L'aeroporto storico del Lido, capolavoro dell'architettura razionalista degli anni '30. È considerato uno dei dieci aeroporti più belli al mondo.", icon: "plane" },
-    { _id: '3', name: "Chiesa di San Nicolò", address: "Riviera San Nicolò", description: "La chiesa dove si conservano parte delle reliquie di San Nicola. Fondata nel 1044, è storicamente legata alla cerimonia dello Sposalizio del Mare.", icon: "church" }
+    { name: "Antico Cimitero Ebraico", address: "Riviera San Nicolò", description: "Uno dei cimiteri ebraici più antichi e suggestivi d'Europa, fondato nel 1386. Un luogo di pace e memoria storica immerso nel verde.", icon: "monument" },
+    { name: "Aeroporto Nicelli", address: "Via Morandi, 9", description: "L'aeroporto storico del Lido, capolavoro dell'architettura razionalista degli anni '30. È considerato uno dei dieci aeroporti più belli al mondo.", icon: "plane" },
+    { name: "Chiesa di San Nicolò", address: "Riviera San Nicolò", description: "La chiesa dove si conservano parte delle reliquie di San Nicola. Fondata nel 1044, è storicamente legata alla cerimonia dello Sposalizio del Mare.", icon: "church" }
   ];
 
   // Merge
@@ -200,17 +199,49 @@ export default async function Home() {
             {/* Sightseeing Section */}
             <h2 id="vedere" className="font-serif text-xl font-bold text-gray-800 mb-4 px-1 mt-8 scroll-mt-24">Luoghi da Vedere</h2>
             <div className="space-y-4 mb-8">
-                {finalSightseeing.map((site) => (
-                <div key={site._id} className="flex bg-white content-card rounded-2xl p-4 border border-gray-100">
-                    <div className="w-10 h-10 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center mr-4 shrink-0">
-                        <i className={`fa-solid fa-${site.icon || 'landmark'}`}></i>
+                {finalSightseeing.map((spot, index) => (
+              <div
+                key={index}
+                className="group relative overflow-hidden rounded-2xl border border-gray-100 bg-white content-card p-0 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+              >
+                <div className="flex flex-col">
+                  {spot.mainImage ? (
+                    <div className="relative h-40 w-full overflow-hidden">
+                      <img
+                        src={spot.mainImage}
+                        alt={spot.name}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                     </div>
-                    <div>
-                        <h3 className="font-bold text-gray-900">{site.name}</h3>
-                        <p className="text-xs text-teal-800 font-medium mb-1"><i className="fa-solid fa-location-dot mr-1"></i>{site.address}</p>
-                        <p className="text-sm text-gray-600 leading-relaxed">{site.description}</p>
+                  ) : (
+                    <div className="flex h-12 w-full items-center justify-center bg-teal-50/50">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-teal-50 text-teal-600">
+                        <i className={`fa-solid fa-${spot.icon || 'landmark'}`}></i>
+                      </div>
                     </div>
+                  )}
+                  <div className="p-4">
+                    <div className="mb-2 flex items-center gap-3">
+                      {spot.mainImage && (
+                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-600">
+                          <i className={`fa-solid fa-${spot.icon || 'landmark'} text-xs`}></i>
+                        </div>
+                      )}
+                      <h3 className="text-lg font-bold tracking-tight text-gray-900">
+                        {spot.name}
+                      </h3>
+                    </div>
+                    <p className="mb-3 text-sm leading-relaxed text-gray-600">
+                      {spot.description}
+                    </p>
+                    <div className="mt-auto flex items-center gap-2 text-xs font-semibold text-teal-800">
+                      <i className="fa-solid fa-location-dot" />
+                      <span>{spot.address}</span>
+                    </div>
+                  </div>
                 </div>
+              </div>
                 ))}
             </div>
 
@@ -256,3 +287,4 @@ export default async function Home() {
     </div>
   );
 }
+

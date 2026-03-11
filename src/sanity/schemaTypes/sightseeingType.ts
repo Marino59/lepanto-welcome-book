@@ -26,5 +26,13 @@ export const sightseeingType = defineType({
       type: 'string',
       initialValue: 'landmark',
     }),
+    defineField({
+      name: 'mainImage',
+      title: 'Immagine principale',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
   ],
 })
