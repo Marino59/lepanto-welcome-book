@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Book - Lido di Venezia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        },
+                        gold: '#d4af37'
+                    }
+                }
+            }
+        }
+        
+        function copyWifi() {
+            navigator.clipboard.writeText("Lepanto17");
+            const btn = document.getElementById("copyBtn");
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check text-green-600"></i> Copiato!';
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+            }, 2000);
+        }
+    </script>
+    <style>
+        body { background-color: #f8fafc; }
+        .hero-bg {
+            background-image: linear-gradient(rgba(17, 94, 89, 0.7), rgba(17, 94, 89, 0.4)), url('https://images.unsplash.com/photo-1514890547357-a9ee288728e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .content-card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased font-sans flex items-center justify-center min-h-screen">
+    
+    <!-- Mobile Container -->
+    <div class="w-full max-w-md bg-white min-h-screen relative shadow-2xl sm:min-h-[850px] sm:my-8 sm:rounded-3xl overflow-hidden border border-gray-100 pb-10">
+        
+        <!-- Hero Section -->
+        <div class="hero-bg h-64 text-white flex flex-col justify-end p-6 relative">
+            <h1 class="font-serif text-3xl font-bold leading-tight mb-2 drop-shadow-lg">Benvenuti al<br>Lido di Venezia</h1>
+            <p class="text-brand-100 font-medium tracking-wide drop-shadow-md flex items-center">
+                <i class="fa-solid fa-location-dot mr-2"></i> Via Lepanto 17
+            </p>
+        </div>
+
+        <div class="px-6 -mt-6">
+            
+            <!-- Intro / History -->
+            <div class="bg-white content-card rounded-2xl p-5 mb-6 border border-gray-100 relative z-10">
+                <h2 class="font-serif text-xl font-bold text-brand-900 mb-3">La Nostra Storia</h2>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                    Il Lido di Venezia è molto più di un'isola: è la spiaggia d'oro della Serenissima e la culla della <em>Belle Époque</em> italiana. Conosciuto in tutto il mondo per ospitare ogni anno la prestigiosa <strong>Mostra Internazionale d'Arte Cinematografica</strong>, il Lido mantiene un fascino senza tempo con le sue ville liberty e i grandi alberghi storici. Godetevi la tranquillità di questa isola sospesa tra la laguna e il Mare Adriatico, a soli 15 minuti di vaporetto da Piazza San Marco.
+                </p>
+            </div>
+
+            <!-- Practical Info -->
+            <h2 class="font-serif text-xl font-bold text-gray-800 mb-4 px-1 mt-4">La Casa</h2>
+            
+            <div class="bg-brand-50 content-card rounded-2xl p-4 mb-4 border border-brand-100 flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-brand-100 text-brand-800 flex items-center justify-center mr-4">
+                        <i class="fa-solid fa-wifi"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 font-semibold uppercase tracking-wider mb-1">Wi-Fi Password</p>
+                        <p class="font-bold text-brand-900 text-lg">Lepanto17</p>
+                    </div>
+                </div>
+                <button id="copyBtn" onclick="copyWifi()" class="text-brand-800 bg-white hover:bg-gray-50 px-3 py-1.5 rounded-lg text-sm font-medium border border-brand-200 transition shadow-sm">
+                    <i class="fa-regular fa-copy"></i> Copia
+                </button>
+            </div>
+
+            <!-- Restaurants -->
+            <h2 class="font-serif text-xl font-bold text-gray-800 mb-4 px-1 mt-8">I Nostri Ristoranti Preferiti</h2>
+            <div class="space-y-4 mb-8">
+                <!-- Restaurant 1 -->
+                <div class="flex bg-white content-card rounded-2xl p-4 border border-gray-100">
+                    <div class="w-10 h-10 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center mr-4 flex-shrink-0">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900">El Cason</h3>
+                        <p class="text-xs text-brand-800 font-medium mb-1"><i class="fa-solid fa-map-pin mr-1"></i>Via Pividor Giovanni</p>
+                        <p class="text-sm text-gray-600">Un punto di riferimento al Lido. Ottima scelta di pesce fresco, carne alla brace e tantissime varianti di pizza.</p>
+                    </div>
+                </div>
+
+                <!-- Restaurant 2 -->
+                <div class="flex bg-white content-card rounded-2xl p-4 border border-gray-100">
+                    <div class="w-10 h-10 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center mr-4 flex-shrink-0">
+                        <i class="fa-solid fa-pizza-slice"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900">Ai Do Mati</h3>
+                        <p class="text-xs text-brand-800 font-medium mb-1"><i class="fa-solid fa-map-pin mr-1"></i>Gran Viale S.M. Elisabetta</p>
+                        <p class="text-sm text-gray-600">Perfetto per mangiare all'aperto nel suo bel dehors, offre ottime pizze e piatti tipici proprio sulla via principale.</p>
+                    </div>
+                </div>
+
+                <!-- Restaurant 3 -->
+                <div class="flex bg-white content-card rounded-2xl p-4 border border-gray-100">
+                    <div class="w-10 h-10 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center mr-4 flex-shrink-0">
+                        <i class="fa-solid fa-wine-glass text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900">La Taverna</h3>
+                        <p class="text-xs text-gray-500 font-medium mb-1">A pochi minuti dal centro</p>
+                        <p class="text-sm text-gray-600">Locale a conduzione familiare, rustico e accogliente, ideale per chi cerca una pizza genuina in un'atmosfera rilassata.</p>
+                    </div>
+                </div>
+
+                <!-- Restaurant 4 -->
+                <div class="flex bg-white content-card rounded-2xl p-4 border border-gray-100">
+                    <div class="w-10 h-10 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center mr-4 flex-shrink-0">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900">Punto Pizza da Maury</h3>
+                        <p class="text-xs text-brand-800 font-medium mb-1"><i class="fa-solid fa-map-pin mr-1"></i>Via Sandro Gallo</p>
+                        <p class="text-sm text-gray-600">Siete di fretta? È la migliore pizzeria al taglio e da asporto della zona, pluripremiata per i suoi impasti.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Essentials -->
+            <h2 class="font-serif text-xl font-bold text-gray-800 mb-4 px-1 mt-8">Negozi ed Essenziali</h2>
+            <div class="grid grid-cols-2 gap-3 mb-8">
+                <div class="bg-gray-50 content-card rounded-2xl p-4 border border-gray-100 text-center">
+                    <div class="w-10 h-10 mx-auto rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mb-2">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-sm">Conad City</h3>
+                    <p class="text-xs text-gray-500 mt-1">Viale S.M. Elisabetta, 1</p>
+                </div>
+                <div class="bg-gray-50 content-card rounded-2xl p-4 border border-gray-100 text-center">
+                    <div class="w-10 h-10 mx-auto rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mb-2">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-sm">Coop Centro</h3>
+                    <p class="text-xs text-gray-500 mt-1">Via Doge Michiel, 5b</p>
+                </div>
+                <div class="bg-gray-50 content-card col-span-2 rounded-2xl p-4 border border-gray-100 flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center mr-3 flex-shrink-0">
+                        <i class="fa-solid fa-staff-snake text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-800 text-sm">Farmacia Dr. Marangoni</h3>
+                        <p class="text-xs text-gray-500 mt-1">Viale S.M. Elisabetta, 55/A</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Emergencies -->
+            <h2 class="font-serif text-xl font-bold text-gray-800 mb-4 px-1 mt-8">Numeri di Emergenza</h2>
+            <div class="bg-red-50 content-card rounded-2xl p-5 border border-red-100 mb-8">
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center pb-3 border-b border-red-100">
+                        <span class="text-sm font-medium text-red-900"><i class="fa-solid fa-phone w-5 text-red-500 text-center"></i> Emergenza Generale</span>
+                        <a href="tel:112" class="font-bold text-red-600">112</a>
+                    </li>
+                    <li class="flex justify-between items-center pb-3 border-b border-red-100">
+                        <span class="text-sm font-medium text-red-900"><i class="fa-solid fa-truck-medical w-5 text-red-500 text-center"></i> Ambulanza</span>
+                        <a href="tel:118" class="font-bold text-red-600">118</a>
+                    </li>
+                    <li class="flex justify-between items-start pb-3 border-b border-red-100">
+                        <span class="text-sm font-medium text-red-900 leading-tight"><i class="fa-solid fa-house-medical w-5 text-red-500 text-center inline-block"></i> Guardia Medica Lido</span>
+                        <div class="text-right">
+                            <a href="tel:+390412385668" class="font-bold text-red-600 block">041 2385668</a>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-start">
+                        <span class="text-sm font-medium text-red-900 leading-tight"><i class="fa-solid fa-hospital w-5 text-red-500 text-center inline-block"></i> Ospedale Al Mare (Lido)</span>
+                        <a href="tel:+390415295234" class="font-bold text-red-600 text-right">041 5295234</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="text-center pb-2 pt-2">
+                <p class="text-sm text-gray-400 font-serif italic mb-1 flex items-center justify-center">
+                    <i class="fa-solid fa-water text-brand-200 mr-2"></i> Vi auguriamo un piacevole soggiorno <i class="fa-solid fa-water text-brand-200 ml-2"></i>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
