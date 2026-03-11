@@ -8,8 +8,8 @@ const EMERGENCIES_QUERY = `*[_type == "emergencyNumber"]`;
 const SIGHTSEEING_QUERY = `*[_type == "sightseeing"]`;
 
 export const queries = {
-  getHouseInfo: () => client.fetch(HOUSE_INFO_QUERY),
-  getRestaurants: () => client.fetch(RESTAURANTS_QUERY),
+  getHouseInfo: () => client.fetch(HOUSE_INFO_QUERY, {}, { next: { revalidate: 60 } }),
+  getRestaurants: () => client.fetch(RESTAURANTS_QUERY, {}, { next: { revalidate: 3600 } }),
   getFacilities: () => client.fetch(FACILITIES_QUERY),
   getEmergencies: () => client.fetch(EMERGENCIES_QUERY),
   getSightseeing: () => client.fetch(SIGHTSEEING_QUERY),

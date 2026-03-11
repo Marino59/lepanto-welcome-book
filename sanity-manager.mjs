@@ -66,6 +66,22 @@ async function main() {
     }
   }
 
+  else if (action === 'set-doorbell') {
+    const name = args[0];
+    if (!name) {
+      console.error('Usage: node sanity-manager.mjs set-doorbell "Name"');
+      return;
+    }
+    const query = `*[_type == "houseInfo"][0]{_id}`;
+    const doc = await client.fetch(query);
+    if (doc) {
+      await client.patch(doc._id).set({ doorbellName: name }).commit();
+      console.log(`✅ Doorbell name set to "${name}"`);
+    } else {
+      console.error('❌ Could not find houseInfo document to update.');
+    }
+  }
+
   else if (action === 'list') {
     const query = '*[_type == "restaurant"]{name, address}';
     const docs = await client.fetch(query);
