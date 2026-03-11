@@ -6,9 +6,10 @@ import { WifiCard } from "@/components/WifiCard";
 interface HouseInfo {
   title?: string;
   address?: string;
+  heroImage?: any;
   history?: string;
   wifiPassword?: string;
-  // heroImage?: any;
+  doorbellName?: string;
 }
 
 interface Restaurant {
@@ -60,10 +61,11 @@ export default async function Home() {
 
   // Fallback Data if Sanity is empty
   const defaultHouseInfo = {
-    title: "Benvenuti al Lido di Venezia",
-    address: "Via Lepanto 17",
-    history: "Il Lido di Venezia è molto più di un'isola: è la spiaggia d'oro della Serenissima e la culla della Belle Époque italiana. Conosciuto in tutto il mondo per ospitare ogni anno la prestigiosa Mostra Internazionale d'Arte Cinematografica, il Lido mantiene un fascino senza tempo con le sue ville liberty e i grandi alberghi storici. Godetevi la tranquillità di questa isola sospesa tra la laguna e il Mare Adriatico, a soli 15 minuti di vaporetto da Piazza San Marco.",
-    wifiPassword: "Lepanto17"
+    title: "Benvenuti a Casa Lepanto",
+    address: "Via Lepanto, Lido di Venezia",
+    history: "Questa casa accoglie viaggiatori da generazioni...",
+    wifiPassword: "Benvenuti_Al_Lido",
+    doorbellName: "Pedani"
   };
 
   const defaultRestaurants = [
@@ -164,6 +166,19 @@ export default async function Home() {
             <h2 id="casa" className="font-serif text-xl font-bold text-gray-800 mb-4 px-1 mt-4 scroll-mt-24">La Casa</h2>
             
             <WifiCard password={finalHouseInfo.wifiPassword} />
+
+            {/* Doorbell Info */}
+            {finalHouseInfo.doorbellName && (
+            <div className="bg-white content-card rounded-2xl p-4 border border-gray-100 mb-6 flex items-center">
+                <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center mr-4 shrink-0">
+                    <i className="fa-solid fa-bell"></i>
+                </div>
+                <div>
+                    <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider">Campanello</h3>
+                    <p className="text-lg font-bold text-brand-900">{finalHouseInfo.doorbellName}</p>
+                </div>
+            </div>
+            )}
 
             {/* Restaurants */}
             <h2 id="ristoranti" className="font-serif text-xl font-bold text-gray-800 mb-4 px-1 mt-8 scroll-mt-24">I Nostri Ristoranti Preferiti</h2>

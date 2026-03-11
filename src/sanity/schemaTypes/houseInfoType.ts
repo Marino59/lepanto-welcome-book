@@ -10,5 +10,6 @@ export const houseInfoType = defineType({
     defineField({ name: 'heroImage', title: 'Hero Image', type: 'image' }),
     defineField({ name: 'history', title: 'Our History', type: 'text' }),
     defineField({ name: 'wifiPassword', title: 'Wi-Fi Password', type: 'string' }),
+    defineField({ name: 'doorbellName', title: 'Doorbell Name', type: 'string' }),
   ],
 })
