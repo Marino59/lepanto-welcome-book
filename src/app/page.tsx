@@ -83,10 +83,10 @@ export default async function Home() {
   const finalEmergencies = emergencies.length > 0 ? emergencies : defaultEmergencies;
 
   return (
-    <div className="w-full max-w-md bg-white min-h-screen relative shadow-2xl sm:min-h-[850px] sm:my-8 sm:rounded-3xl overflow-hidden border border-gray-100 pb-10">
+    <div className="w-full max-w-md bg-white min-h-screen relative shadow-2xl sm:min-h-[850px] sm:my-8 sm:rounded-3xl border border-gray-100 pb-10">
         
         {/* Hero Section */}
-        <div className="hero-bg h-64 text-white flex flex-col justify-end p-6 relative">
+        <div className="hero-bg h-64 text-white flex flex-col justify-end p-6 relative rounded-t-3xl overflow-hidden">
             <h1 className="font-serif text-3xl font-bold leading-tight mb-2 drop-shadow-lg" dangerouslySetInnerHTML={{ __html: finalHouseInfo.title?.replace(/\n/g, '<br/>') || '' }}></h1>
             <p className="text-brand-100 font-medium tracking-wide drop-shadow-md flex items-center">
                 <i className="fa-solid fa-location-dot mr-2"></i> {finalHouseInfo.address}
@@ -96,7 +96,7 @@ export default async function Home() {
         <div className="px-6 -mt-6">
             
             {/* Quick Navigation Index */}
-            <div className="bg-white/80 backdrop-blur-md sticky top-4 z-30 rounded-2xl shadow-lg border border-gray-100 p-2 mb-6 mt-2 flex justify-around items-center overflow-x-auto no-scrollbar">
+            <div className="bg-white/90 backdrop-blur-md sticky top-0 z-30 rounded-2xl shadow-lg border border-gray-100 p-2 mb-6 mt-2 flex justify-around items-center overflow-x-auto no-scrollbar">
                 <a href="#storia" className="flex flex-col items-center p-2 min-w-[60px]">
                     <div className="w-8 h-8 rounded-full bg-brand-50 text-brand-500 flex items-center justify-center mb-1">
                         <i className="fa-solid fa-book-open text-xs"></i>
