@@ -4,7 +4,7 @@ import { schema } from './src/sanity/schema'
 
 export default defineConfig({
   basePath: '/studio',
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'fpczyqs3',
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
   title: 'Welcome Book Studio',
   
