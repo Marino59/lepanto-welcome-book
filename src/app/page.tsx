@@ -95,21 +95,55 @@ export default async function Home() {
 
         <div className="px-6 -mt-6">
             
+            {/* Quick Navigation Index */}
+            <div className="bg-white/80 backdrop-blur-md sticky top-4 z-30 rounded-2xl shadow-lg border border-gray-100 p-2 mb-6 mt-2 flex justify-around items-center overflow-x-auto no-scrollbar">
+                <a href="#storia" className="flex flex-col items-center p-2 min-w-[60px]">
+                    <div className="w-8 h-8 rounded-full bg-brand-50 text-brand-500 flex items-center justify-center mb-1">
+                        <i className="fa-solid fa-book-open text-xs"></i>
+                    </div>
+                    <span className="text-[10px] font-bold text-gray-500 uppercase tracking-tighter">Storia</span>
+                </a>
+                <a href="#casa" className="flex flex-col items-center p-2 min-w-[60px]">
+                    <div className="w-8 h-8 rounded-full bg-brand-50 text-brand-500 flex items-center justify-center mb-1">
+                        <i className="fa-solid fa-house text-xs"></i>
+                    </div>
+                    <span className="text-[10px] font-bold text-gray-500 uppercase tracking-tighter">Casa</span>
+                </a>
+                <a href="#ristoranti" className="flex flex-col items-center p-2 min-w-[60px]">
+                    <div className="w-8 h-8 rounded-full bg-brand-50 text-brand-500 flex items-center justify-center mb-1">
+                        <i className="fa-solid fa-utensils text-xs"></i>
+                    </div>
+                    <span className="text-[10px] font-bold text-gray-500 uppercase tracking-tighter">Cibo</span>
+                </a>
+                <a href="#negozi" className="flex flex-col items-center p-2 min-w-[60px]">
+                    <div className="w-8 h-8 rounded-full bg-brand-50 text-brand-500 flex items-center justify-center mb-1">
+                        <i className="fa-solid fa-bag-shopping text-xs"></i>
+                    </div>
+                    <span className="text-[10px] font-bold text-gray-500 uppercase tracking-tighter">Negozi</span>
+                </a>
+                <a href="#emergenze" className="flex flex-col items-center p-2 min-w-[60px]">
+                    <div className="w-8 h-8 rounded-full bg-brand-50 text-brand-500 flex items-center justify-center mb-1">
+                        <i className="fa-solid fa-phone-flip text-xs"></i>
+                    </div>
+                    <span className="text-[10px] font-bold text-gray-500 uppercase tracking-tighter">SOS</span>
+                </a>
+            </div>
+            
             {/* Intro / History */}
             {finalHouseInfo.history && (
-            <div className="bg-white content-card rounded-2xl p-5 mb-6 border border-gray-100 relative z-10">
+            <div id="storia" className="bg-white content-card rounded-2xl p-5 mb-6 border border-gray-100 relative z-10 scroll-mt-24">
                 <h2 className="font-serif text-xl font-bold text-brand-900 mb-3">La Nostra Storia</h2>
                 <p className="text-sm text-gray-600 leading-relaxed" dangerouslySetInnerHTML={{ __html: finalHouseInfo.history.replace(/\n/g, '<br/>') || '' }}></p>
             </div>
             )}
 
             {/* Practical Info */}
-            <h2 className="font-serif text-xl font-bold text-gray-800 mb-4 px-1 mt-4">La Casa</h2>
+            <h2 id="casa" className="font-serif text-xl font-bold text-gray-800 mb-4 px-1 mt-4 scroll-mt-24">La Casa</h2>
             
             <WifiCard password={finalHouseInfo.wifiPassword} />
 
             {/* Restaurants */}
-            <h2 className="font-serif text-xl font-bold text-gray-800 mb-4 px-1 mt-8">I Nostri Ristoranti Preferiti</h2>
+            <h2 id="ristoranti" className="font-serif text-xl font-bold text-gray-800 mb-4 px-1 mt-8 scroll-mt-24">I Nostri Ristoranti Preferiti</h2>
             <div className="space-y-4 mb-8">
                 {finalRestaurants.map((restaurant) => (
                 <div key={restaurant._id} className="flex bg-white content-card rounded-2xl p-4 border border-gray-100">
@@ -126,7 +160,7 @@ export default async function Home() {
             </div>
 
             {/* Essentials */}
-            <h2 className="font-serif text-xl font-bold text-gray-800 mb-4 px-1 mt-8">Negozi ed Essenziali</h2>
+            <h2 id="negozi" className="font-serif text-xl font-bold text-gray-800 mb-4 px-1 mt-8 scroll-mt-24">Negozi ed Essenziali</h2>
             <div className="grid grid-cols-2 gap-3 mb-8">
                 {finalFacilities.map((facility, index) => (
                 <div key={facility._id} className={`bg-gray-50 content-card rounded-2xl p-4 border border-gray-100 ${index === 2 ? 'col-span-2 flex items-center' : 'text-center'}`}>
@@ -142,7 +176,7 @@ export default async function Home() {
             </div>
 
             {/* Emergencies */}
-            <h2 className="font-serif text-xl font-bold text-gray-800 mb-4 px-1 mt-8">Numeri di Emergenza</h2>
+            <h2 id="emergenze" className="font-serif text-xl font-bold text-gray-800 mb-4 px-1 mt-8 scroll-mt-24">Numeri di Emergenza</h2>
             <div className="bg-red-50 content-card rounded-2xl p-5 border border-red-100 mb-8">
                 <ul className="space-y-3">
                     {finalEmergencies.map((emergency, index) => (
