@@ -33,7 +33,7 @@ interface Emergency {
   icon?: string;
 }
 
-export const revalidate = 60; // Revalidate cache every 60 seconds
+export const revalidate = 10; // Revalidate cache every 10 seconds
 
 export default async function Home() {
   // Fetch data
@@ -87,7 +87,7 @@ export default async function Home() {
         
         {/* Hero Section */}
         <div className="hero-bg h-64 text-white flex flex-col justify-end p-6 relative">
-            <h1 className="font-serif text-3xl font-bold leading-tight mb-2 drop-shadow-lg" dangerouslySetInnerHTML={{ __html: finalHouseInfo.title?.replace('\n', '<br/>') || '' }}></h1>
+            <h1 className="font-serif text-3xl font-bold leading-tight mb-2 drop-shadow-lg" dangerouslySetInnerHTML={{ __html: finalHouseInfo.title?.replace(/\n/g, '<br/>') || '' }}></h1>
             <p className="text-brand-100 font-medium tracking-wide drop-shadow-md flex items-center">
                 <i className="fa-solid fa-location-dot mr-2"></i> {finalHouseInfo.address}
             </p>
@@ -99,7 +99,7 @@ export default async function Home() {
             {finalHouseInfo.history && (
             <div className="bg-white content-card rounded-2xl p-5 mb-6 border border-gray-100 relative z-10">
                 <h2 className="font-serif text-xl font-bold text-brand-900 mb-3">La Nostra Storia</h2>
-                <p className="text-sm text-gray-600 leading-relaxed" dangerouslySetInnerHTML={{ __html: finalHouseInfo.history.replace(/\ng/g, '<br/>') || '' }}></p>
+                <p className="text-sm text-gray-600 leading-relaxed" dangerouslySetInnerHTML={{ __html: finalHouseInfo.history.replace(/\n/g, '<br/>') || '' }}></p>
             </div>
             )}
 
