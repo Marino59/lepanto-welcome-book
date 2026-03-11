@@ -88,9 +88,27 @@ export default async function Home() {
     { _id: '4', name: "Ospedale Al Mare (Lido)", number: "041 5295234", icon: "hospital" }
   ];
   const defaultSightseeing = [
-    { name: "Antico Cimitero Ebraico", address: "Riviera San Nicolò", description: "Uno dei cimiteri ebraici più antichi e suggestivi d'Europa, fondato nel 1386. Un luogo di pace e memoria storica immerso nel verde.", icon: "monument" },
-    { name: "Aeroporto Nicelli", address: "Via Morandi, 9", description: "L'aeroporto storico del Lido, capolavoro dell'architettura razionalista degli anni '30. È considerato uno dei dieci aeroporti più belli al mondo.", icon: "plane" },
-    { name: "Chiesa di San Nicolò", address: "Riviera San Nicolò", description: "La chiesa dove si conservano parte delle reliquie di San Nicola. Fondata nel 1044, è storicamente legata alla cerimonia dello Sposalizio del Mare.", icon: "church" }
+    { 
+      name: "Antico Cimitero Ebraico", 
+      address: "Riviera San Nicolò", 
+      description: "Uno dei cimiteri ebraici più antichi e suggestivi d'Europa, fondato nel 1386. Un luogo di pace e memoria storica immerso nel verde.", 
+      icon: "monument",
+      mainImage: "https://cdn.sanity.io/images/fpczyqs3/production/39938e3bf8443d83fb7e6893692a49919b514e1e-640x640.png"
+    },
+    { 
+      name: "Aeroporto Nicelli", 
+      address: "Via Morandi, 9", 
+      description: "L'aeroporto storico del Lido, capolavoro dell'architettura razionalista degli anni '30. È considerato uno dei dieci aeroporti più belli al mondo.", 
+      icon: "plane",
+      mainImage: "https://cdn.sanity.io/images/fpczyqs3/production/164b40383aaf955de348be5f59d63e0a1654fae2-640x640.png"
+    },
+    { 
+      name: "Chiesa di San Nicolò", 
+      address: "Riviera San Nicolò", 
+      description: "La chiesa dove si conservano parte delle reliquie di San Nicola. Fondata nel 1044, è storicamente legata alla cerimonia dello Sposalizio del Mare.", 
+      icon: "church",
+      mainImage: "https://cdn.sanity.io/images/fpczyqs3/production/cbca37c70c116c74135d2c7ee02de7e3399fe622-640x640.png"
+    }
   ];
 
   // Merge

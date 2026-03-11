@@ -18,5 +18,5 @@ export const queries = {
   getRestaurants: () => client.fetch(RESTAURANTS_QUERY, {}, { next: { revalidate: 3600 } }),
   getFacilities: () => client.fetch(FACILITIES_QUERY),
   getEmergencies: () => client.fetch(EMERGENCIES_QUERY),
-  getSightseeing: () => client.fetch(SIGHTSEEING_QUERY),
+  getSightseeing: () => client.fetch(SIGHTSEEING_QUERY, {}, { next: { revalidate: 10 } }),
 };
